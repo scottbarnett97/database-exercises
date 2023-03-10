@@ -10,10 +10,10 @@ from albums;
 -- id
 
 -- 3. What does the column named 'name' represent?
--- The name of a album
+-- The name of album
 
 -- 4.  What do you think the sales column represents?
--- number of copies the album sold (in millions)
+-- probably number of copies the album sold (in millions)
 
 -- 5. Find the name of all albums by Pink Floyd.
 /* select distinct artist, name 
