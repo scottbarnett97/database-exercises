@@ -53,10 +53,38 @@ having first_name = 'Irena' or first_name = 'Vidya' or first_name = 'Maya';
 
 -- 8. Using your query that generates a username for all of the employees, 
 -- generate a count employees for each unique username.
+select concat(
+lower(substr(first_name,1,1))
+ , lower(substr(last_name,1,4))
+ , "_"
+ , month(birth_date)
+ , substr(year(birth_date),-2)) as username
+ -- , first_name, last_name, birth_date
+ , count(*)
+from employees
+group by username;
+-- , first_name,last_name,birth_date
+-- 9. From your previous query, are there any duplicate usernames? What is the higest number of times a username 
+-- shows up? Bonus: How many duplicate usernames are there from your previous query?
 
+select concat(
+lower(substr(first_name,1,1))
+ , lower(substr(last_name,1,4))
+ , "_"
+ , month(birth_date)
+ , substr(year(birth_date),-2)) as username
+ -- , first_name, last_name, birth_date
+ , count(*) as n_with
+from employees
+group by username
+having n_with !=1
+order by  count(*) desc
+;
+-- , first_name,last_name,birth_date
 
-
-
+-- are there any duplicate usernames? yes
+-- What is the higest number of times a username shows up?  6
+-- How many duplicate usernames are there from your previous query? 13251
 
 
 
