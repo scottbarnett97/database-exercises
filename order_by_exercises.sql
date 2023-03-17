@@ -8,7 +8,7 @@ show tables;
 select *
 from employees
  where first_name = 'Irena'or first_name = 'Vidya' or first_name = 'Maya'
-    order by first_name;
+    order by first_name ;
     -- Irena Reutenauer, Vidya Simmen
 
 -- 3. Find all employees with first names 'Irena', 'Vidya', or 'Maya', and order your results returned by first name and then 

@@ -62,11 +62,19 @@ use employees;
         (SELECT stddev(salary) FROM salaries where to_date > now()) AS zscore
     FROM salaries
     WHERE to_date > now();
+create temporary table pagel_2190.current_info as
+(    
+select dept_name, Round(avg(salary)) as average_salary
+	from employees as e
+	join salaries as s on s.emp_no = e.emp_no
+	join dept_emp as de on de.emp_no = e.emp_no
+	join departments as d on d.dept_no = de.dept_no
+	where de.to_date > curdate()
+	and s.to_date > curdate()
+	group by dept_name
+	order by avg(salary) desc
+    );
+    select * from pagel_2190.current_info;
     
-    select dept_name, Round(avg(salary)) as average_salary
-from employees as e
-join salaries as s on s.emp_no = e.emp_no
-join dept_emp as de on de.emp_no = e.emp_no
-join departments as d on d.dept_no = de.dept_no
-group by dept_name
-order by avg(salary) desc;
+
+
